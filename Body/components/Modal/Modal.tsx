@@ -168,7 +168,7 @@ function Modal() {
 
                 <div className={styles.content}>
                     {data?.getCode?.img == '' ? (
-                        <img src='penguin.png' alt='no_image' width={100} height={70} />
+                        <img src='logo.png' alt='no_image' width={100} height={70} />
                     ) : (
                         <img src={data?.getCode?.img} alt='no_image' width={100} height={70} />
                     )}

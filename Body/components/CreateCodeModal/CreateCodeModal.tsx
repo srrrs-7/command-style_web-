@@ -6,7 +6,7 @@ import { client, NewHeader, option } from 'graphql/client';
 import { GetCookie, RemoveCookie } from 'utils/cookie';
 import { createCodeModalState } from 'recoil/modal';
 import { distinctArray } from 'utils/utilArray';
-import defaultImage from '../../../public/penguin.png';
+import defaultImage from '../../../public/logo.png';
 import anime from 'animejs';
 import { GetSessionStorage, RemoveSessionStorage } from 'utils/session';
 import { sessionState } from 'recoil/global';
@@ -16,7 +16,7 @@ function CreateCodeModal() {
     // input state
     const [code, setCode] = useState<string>('');
     const [img, setImg] = useState<string | ArrayBuffer | null | undefined | any>(defaultImage.src);
-    const [imageStr, setImageStr] = useState<string>('/penguin.png');
+    const [imageStr, setImageStr] = useState<string>('/logo.png');
     const [description, setDescription] = useState<string>('');
     const [tag, setTag] = useState<string>('');
     // status

@@ -157,7 +157,7 @@ function CartModal() {
 
                 <div className={styles.content}>
                     {data?.getCode?.img == '' ? (
-                        <img src='penguin.png' alt='code_image' width={100} height={70} />
+                        <img src='logo.png' alt='code_image' width={100} height={70} />
                     ) : (
                         <img src={data?.getCode?.img} alt='code_image' width={100} height={70} />
                     )}

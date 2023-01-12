@@ -114,7 +114,7 @@ function SearchCollectionBody() {
                             }}
                         >
                             {c.img == '' ? (
-                                <img src='penguin.png' alt='code_image' width={60} height={35} />
+                                <img src='logo.png' alt='code_image' width={60} height={35} />
                             ) : (
                                 <img src={c?.img} alt='code_image' width={60} height={35} />
                             )}

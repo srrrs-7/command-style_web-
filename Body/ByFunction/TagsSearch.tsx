@@ -89,7 +89,7 @@ function TagsSearch() {
                     {data?.getAllCodesByTag.map((c) => (
                         <div className={styles.grid_items} key={c.id} onClick={() => showModalHandler(parseInt(c.id))}>
                             {c.img == '' ? (
-                                <img src='penguin.png' alt='no_image' width={60} height={35} />
+                                <img src='logo.png' alt='no_image' width={60} height={35} />
                             ) : (
                                 <img src={c?.img} alt='no_image' width={60} height={35} />
                             )}
