@@ -1,0 +1,25 @@
+@import '../src/styles/base.scss';
+.box {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: $bg_base_color;
+}
+
+.title {
+    font-family: monospace;
+    font-size: 30px;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    margin: 250px;
+    background-color: $bg_color;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px 5px rgb(185, 185, 185);
+}

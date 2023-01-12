@@ -1,0 +1,44 @@
+@import '../../../src/styles/base.scss';
+.box {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.grid_box {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+    grid-template-rows: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.grid_items {
+    @include base_text();
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(133, 133, 133);
+    border-radius: 94px 65px 106px 93px / 120px 125px 190px 82px;
+    padding: 50px;
+    margin: 50px;
+}
+
+.grid_items_current {
+    @include base_text();
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(133, 133, 133);
+    border-radius: 94px 65px 106px 93px / 120px 125px 190px 82px;
+    padding: 50px;
+    margin: 50px;
+    background-color: rgb(94, 241, 241);
+}
+
+.grid_items:hover {
+    background-color: $select_color;
+    cursor: pointer;
+}

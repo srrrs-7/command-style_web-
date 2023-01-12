@@ -1,0 +1,63 @@
+@import '../../../src/styles/base.scss';
+.tag_bar_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 60px;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+    font-family: monospace;
+    font-size: 15px;
+}
+
+.box_tag {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    font-family: monospace;
+    font-size: 15px;
+    background: linear-gradient(rgb(255, 255, 255), rgb(166, 237, 233));
+    width: 53%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.tag {
+    border: 1px solid rgb(133, 133, 133);
+    border-radius: 94px 65px 106px 93px / 120px 125px 190px 82px;
+    padding: 0px 10px 0px 10px;
+    margin: 0px 10px 0px 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.tag:hover {
+    background-color: #fa5e5e;
+}
+
+.input {
+    @include base_input();
+    border: 1px solid black;
+    font-family: monospace;
+    width: 240px;
+    height: 30px;
+    outline: none;
+}
+
+.input_box {
+    @include base_box(100%, 100%, 0px, 10px);
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.search_icon:hover {
+    scale: 110%;
+}

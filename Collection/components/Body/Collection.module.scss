@@ -1,0 +1,158 @@
+@import '../../../src/styles/base.scss';
+.lazy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: blue;
+    margin-bottom: 50px;
+}
+
+.box {
+    @include base_box(100% 100% 100% 100%);
+    justify-content: center;
+    background: linear-gradient(rgb(255, 255, 255), rgb(166, 237, 233));
+}
+
+.flex_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    font-size: 25px;
+}
+
+.spinnerBox {
+    @include base_box(100% 100% 100% 100%);
+    justify-content: center;
+    align-items: center;
+    margin: 0px 0px 250px 0px;
+    padding-top: 100px;
+}
+
+.grid_box {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+    grid-template-rows: 250px 250px 250px 250px 250px;
+}
+
+.grid_items {
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    border: 0.1px solid rgb(189, 187, 187);
+    padding: 10px;
+    margin: 10px;
+}
+
+.grid_items:hover {
+    scale: 105%;
+    cursor: pointer;
+}
+
+.top {
+    @include base_box(100% 100% 100% 100%);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    background: linear-gradient(rgb(166, 237, 233), rgb(255, 255, 255));
+}
+
+.topIcon {
+    color: $text_color;
+    font-size: 50px;
+    margin-top: 50px;
+}
+
+.topIcon:hover {
+    @include base_select();
+}
+
+.text {
+    @include base_text();
+    margin: 0px 0px 0px 0px;
+    font-size: 40px;
+}
+
+.close_btn {
+    padding: 0.3rem;
+    background-color: rgb(232, 232, 232);
+    border-radius: 94px 65px 106px 93px / 120px 125px 190px 82px;
+    border: none;
+    cursor: pointer;
+}
+
+.close_btn:hover {
+    scale: 110%;
+}
+
+.err {
+    font-family: monospace;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+}
+
+.spinnerBox {
+    @include base_box(100% 100% 100% 100%);
+    justify-content: center;
+    align-items: center;
+    margin: 0px 0px 250px 0px;
+    padding-top: 100px;
+}
+
+.accessBox {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.accessIcon {
+    color: yellow;
+    scale: 120%;
+}
+
+.blankIcon {
+    color: rgb(210, 244, 255);
+    scale: 120%;
+}
+
+.code_box {
+    width: 150px;
+    height: 40px;
+    overflow: scroll;
+}
+
+.code_box::-webkit-scrollbar {
+    display: none;
+}
+
+.text {
+    @include base_text();
+    font-size: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 10px 0px 10px 0px;
+}
+
+.box_tag {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: center;
+    margin-top: 20px;
+    font-family: monospace;
+    font-size: 15px;
+    overflow: scroll;
+}
+
+.box_tag::-webkit-scrollbar {
+    display: none;
+}
+
+.tag {
+    border: 1px solid rgb(133, 133, 133);
+    border-radius: 94px 65px 106px 93px / 120px 125px 190px 82px;
+    padding: 0px 10px 0px 10px;
+    margin: 0px 10px 0px 10px;
+    cursor: pointer;
+}

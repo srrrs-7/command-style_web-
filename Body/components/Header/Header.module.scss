@@ -1,0 +1,110 @@
+@import '../../../src/styles/base.scss';
+.box {
+    @include base_box(100%, 70px, 0px, 10px 100px 10px 0px);
+    justify-items: center;
+    align-items: center;
+    position: fixed;
+    background-color: $bg_color;
+    top: 0;
+    z-index: 1;
+}
+
+.title_box {
+    @include base_box(100%, 100%, 0px, 10px);
+    justify-content: center;
+    align-items: center;
+}
+
+.input_box {
+    @include base_box(100%, 100%, 0px, 10px);
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    margin-left: 100px;
+}
+
+.sign_box {
+    @include base_box(100%, 100%, 0px, 10px);
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    @include base_text();
+    margin: 0px 0px 0px 50px;
+    font-size: 30px;
+}
+
+.input {
+    @include base_input();
+    border: none;
+    font-family: monospace;
+    width: 300px;
+    height: 30px;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.search_icon {
+    font-size: 200%;
+    position: absolute;
+    top: 21px;
+    left: 950px;
+    @include base_text();
+}
+
+.search_icon:hover {
+    @include base_select();
+}
+
+.cart_icon {
+    margin-top: 10px;
+    font-size: 200%;
+    @include base_text();
+}
+
+.cart_icon:hover {
+    @include base_select();
+}
+
+.edit_icon {
+    margin-top: 10px;
+    font-size: 110%;
+    @include base_text();
+}
+
+.edit_icon:hover {
+    @include base_select();
+}
+
+.trash_icon {
+    margin-top: 7px;
+    font-size: 250%;
+    margin-left: 25px;
+    @include base_text();
+}
+
+.trash_icon:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.sign_text {
+    padding: 0px 50px 0px 0px;
+    font-size: 180%;
+    margin-right: 20px;
+    @include base_text();
+}
+
+.sign_text:hover {
+    @include base_select();
+}
+
+.current_path {
+    padding: 0px 50px 0px 0px;
+    font-size: 200%;
+    color: rgb(46, 42, 255);
+}

@@ -1,0 +1,41 @@
+@import '../../../src/styles/base.scss';
+.box {
+    @include base_box(100%, 70px, 0px, 10px 100px 10px 0px);
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    background-color: $bg_color;
+}
+
+.title_box {
+    @include base_box(100%, 100%, 0px, 10px);
+    justify-content: center;
+    align-items: center;
+    gap: 40rem;
+}
+
+.text {
+    @include base_text();
+    margin: 0px 0px 0px 50px;
+    font-size: 40px;
+}
+
+.login_text {
+    padding: 0px 50px 0px 0px;
+    font-size: 180%;
+    @include base_text();
+}
+
+.logout_text {
+    padding: 0px 50px 0px 0px;
+    font-size: 180%;
+    cursor: pointer;
+    @include base_text();
+}
+
+.logout_text:hover {
+    scale: 110%;
+    @include base_select();
+}

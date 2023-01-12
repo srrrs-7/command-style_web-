@@ -1,0 +1,40 @@
+@import '../src/styles/base.scss';
+.top {
+    @include base_box(100% 100% 100% 100%);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    background: linear-gradient(rgb(166, 237, 233), rgb(255, 255, 255));
+}
+
+.topIcon {
+    color: $text_color;
+    font-size: 50px;
+    margin-top: 50px;
+}
+
+.topIcon:hover {
+    @include base_select();
+}
+
+.create_code {
+    display: flex;
+    position: fixed;
+    right: 15%;
+    bottom: 10%;
+    cursor: pointer;
+}
+
+.create_code:hover {
+    scale: 110%;
+}
+
+.create_code_icon {
+    color: rgb(0, 47, 254);
+    background: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 94px 65px 106px 93px / 120px 125px 190px 82px;
+    width: 200px;
+    height: 200px;
+}

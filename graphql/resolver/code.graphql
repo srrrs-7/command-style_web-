@@ -1,0 +1,152 @@
+query getAllCodes($limit: Int!, $skip: Int!) {
+    getAllCodes(limit: $limit, skip: $skip) {
+        id
+        code
+        img
+        description
+        performance
+        star
+        tags
+        created_at
+        updated_at
+        access
+        user_id
+    }
+}
+
+mutation createCode($code: String!, $img: Byte!, $description: String!, $performance: String!, $star: [Int!]!, $tags: [String!]!, $access: Int!) {
+    createCode(code: $code, img: $img, description: $description, performance: $performance, star: $star, tags: $tags, access: $access) {
+        is_error
+        message
+    }
+}
+
+query getCode($id: Int!) {
+    getCode(id: $id) {
+        id
+        username
+        code
+        img
+        description
+        performance
+        star
+        tags
+        created_at
+        updated_at
+        access
+        user_id
+    }
+}
+
+query getAllOwnCodes($limit: Int!, $skip: Int!) {
+    getAllOwnCodes(limit: $limit, skip: $skip) {
+        id
+        username
+        code
+        img
+        description
+        performance
+        star
+        tags
+        created_at
+        updated_at
+        access
+        user_id
+    }
+}
+
+query getAllCodesByTags($tags: [String!]!, $sortBy: SortBy!, $limit: Int!, $skip: Int!) {
+    getAllCodesByTag(tags: $tags, sortBy: $sortBy, limit: $limit, skip: $skip) {
+        id
+        username
+        code
+        img
+        description
+        performance
+        star
+        tags
+        created_at
+        updated_at
+        access
+        user_id
+    }
+}
+
+query GetAllCodesByKeyword($keyword: String!, $limit: Int!, $skip: Int!) {
+    GetAllCodesByKeyword(keyword: $keyword, limit: $limit, skip: $skip) {
+        id
+        username
+        code
+        img
+        description
+        performance
+        star
+        tags
+        created_at
+        updated_at
+        access
+        user_id
+    }
+}
+
+query GetAllCodesSortedStar($limit: Int!, $skip: Int!) {
+    GetAllCodesSortedStar(limit: $limit, skip: $skip) {
+        id
+        username
+        code
+        img
+        description
+        performance
+        star
+        tags
+        created_at
+        updated_at
+        access
+        user_id
+    }
+}
+
+query GetAllCodesSortedAccess($limit: Int!, $skip: Int!) {
+    GetAllCodesSortedAccess(limit: $limit, skip: $skip) {
+        id
+        username
+        code
+        img
+        description
+        performance
+        star
+        tags
+        created_at
+        updated_at
+        access
+        user_id
+    }
+}
+
+mutation updateCode($id: Int!, $code: String!, $img: Byte!, $description: String!, $performance: String!, $tags: [String!]!) {
+    updateCodes(id: $id, code: $code, img: $img, description: $description, performance: $performance, tags: $tags) {
+        is_error
+        message
+    }
+}
+
+mutation updateAccess($id: Int!, $access: Int!) {
+    updateAccess(id: $id, access: $access) {
+        is_error
+        message
+    }
+}
+
+mutation updateStar($code_id: Int!) {
+    updateStar(code_id: $code_id) {
+        is_error
+        message
+    }
+}
+
+mutation deleteCode($id: Int!) {
+    deleteCode(id: $id) {
+        is_error
+        message
+    }
+}

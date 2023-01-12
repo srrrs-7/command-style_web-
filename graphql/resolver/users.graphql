@@ -1,0 +1,24 @@
+mutation createUser($username: String!, $password: String!, $email: String!, $sex: String!, $date_of_birth: String!) {
+    createUser(username: $username, password: $password, email: $email, sex: $sex, date_of_birth: $date_of_birth) {
+        is_error
+        message
+    }
+}
+
+mutation loginUser($username: String!, $password: String!) {
+    loginUser(username: $username, password: $password) {
+        user_id
+        username
+        OK
+    }
+}
+
+# implement on hold
+mutation deleteUser($username: String!) {
+    deleteUser(username: $username) {
+        is_error
+        message
+    }
+}
+
+# implement on hold update user

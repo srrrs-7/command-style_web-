@@ -1,0 +1,16 @@
+{
+    "plugins": ["@typescript-eslint", "react-hooks"],
+    "extends": ["next/core-web-vitals", "plugin:import/recommended", "plugin:import/warnings", "prettier"],
+    "rules": {
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "import/order": [
+            "error",
+            {
+                "alphabetize": {
+                    "order": "asc"
+                }
+            }
+        ]
+    }
+}

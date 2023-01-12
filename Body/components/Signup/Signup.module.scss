@@ -1,0 +1,80 @@
+@import '../../../src/styles/base.scss';
+.box {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: linear-gradient(rgb(255, 255, 255), rgb(166, 237, 233));
+}
+
+.title {
+    font-family: monospace;
+    font-size: 30px;
+}
+
+.text {
+    font-size: 25px;
+    font-family: monospace;
+}
+
+.input {
+    @include base_input();
+    border: 10px;
+    font-family: monospace;
+    width: 350px;
+    height: 35px;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.input_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+    margin: 100px;
+    background-color: $bg_color;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px 5px rgb(185, 185, 185);
+}
+
+.contents {
+    padding: 10px;
+}
+
+.signupBox {
+    display: flex;
+    margin: 50px 0px 50px 0px;
+}
+
+.signupButton {
+    font-family: monospace;
+    outline: none;
+    border: none;
+    font-size: 25px;
+    width: 200px;
+    height: 40px;
+    box-shadow: 5px 3px 10px rgb(185, 185, 185);
+    background-color: rgb(255, 255, 255);
+}
+
+.signupButton:hover {
+    @include base_select();
+    scale: 95%;
+}
+
+.err {
+    font-family: monospace;
+    font-size: 20px;
+    color: rgb(255, 59, 59);
+}

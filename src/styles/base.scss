@@ -1,0 +1,39 @@
+// variable
+$bg_base_color: rgb(255, 255, 255);
+$bg_color: rgb(225, 225, 225);
+$text_color: rgb(114, 110, 110);
+$select_color: rgb(94, 241, 241);
+$text_base_size: 50px;
+// function
+@mixin base_box($width: 0%, $height: 0%, $margin: 0px, $padding: 0px) {
+    display: flex;
+    flex-direction: row;
+    width: $width;
+    height: $height;
+    margin: $margin;
+    padding: $padding;
+    font-family: monospace;
+    color: $text_color;
+}
+
+@mixin base_image($width: 120px, $height: 120px) {
+    width: $width;
+    height: $height;
+}
+
+@mixin base_text() {
+    font-family: monospace;
+    color: $text_color;
+}
+
+@mixin base_select() {
+    color: $select_color;
+    cursor: pointer;
+}
+
+@mixin base_input {
+    border-radius: 10px;
+    padding: 12px 30px 12px 20px;
+    width: 60%;
+    height: 10px;
+}

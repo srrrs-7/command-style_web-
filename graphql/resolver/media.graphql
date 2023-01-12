@@ -1,0 +1,42 @@
+query getAllMedia($limit: Int!, $skip: Int!) {
+    getAllMedia(limit: $limit, skip: $skip) {
+        id
+        title
+        contents
+        img
+        created_at
+        updated_at
+    }
+}
+
+mutation createMedia($title: String!, $contents: String!, $img: Byte!) {
+    createMedia(title: $title, contents: $contents, img: $img) {
+        is_error
+        message
+    }
+}
+
+mutation updateMedia($id: ID!, $title: String!, $contents: String!, $img: Byte!) {
+    updateMedia(id: $id, title: $title, contents: $contents, img: $img) {
+        is_error
+        message
+    }
+}
+
+mutation getMedia($id: Int!) {
+    getMedia(id: $id) {
+        id
+        title
+        contents
+        img
+        created_at
+        updated_at
+    }
+}
+
+mutation deleteMedia($id: Int!) {
+    deleteMedia(id: $id) {
+        is_error
+        message
+    }
+}

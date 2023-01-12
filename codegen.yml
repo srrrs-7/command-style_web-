@@ -1,0 +1,19 @@
+overwrite: true
+# schema: 'src/schema/schema.graphql',
+schema: 'graphql/schema/schema.graphql'
+documents: 'graphql/resolver/*.graphql'
+generates:
+    graphql/types/graphql.ts:
+        plugins:
+            - add
+            - typescript
+            - typescript-operations
+            - typescript-react-query
+        config:
+            content:
+                - /* eslint-disable */
+                  // @ts-ignore
+            fetcher: graphql-request
+            exposeQueryKeys: true
+            addInfiniteQuery: true
+            isReactHook: true

@@ -1,0 +1,135 @@
+@import '../src/styles/base.scss';
+.lazy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: blue;
+    margin-bottom: 50px;
+}
+
+.box {
+    @include base_box(100% 100% 100% 100%);
+    justify-content: center;
+    background: linear-gradient(rgb(255, 255, 255), rgb(166, 237, 233));
+}
+
+.grid_box {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+    grid-template-rows: 250px 250px 250px 250px 250px;
+}
+
+.grid_items {
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    border: 0.1px solid rgb(189, 187, 187);
+    padding: 10px 10px 10px 10px;
+    margin: 10px;
+}
+
+.grid_items:hover {
+    scale: 105%;
+    cursor: pointer;
+}
+
+.flex_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    font-size: 25px;
+}
+
+.top {
+    @include base_box(100% 100% 100% 100%);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.topIcon {
+    color: $text_color;
+    font-size: 50px;
+    margin-top: 50px;
+}
+
+.topIcon:hover {
+    @include base_select();
+}
+
+.accessBox {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: none;
+}
+
+.accessIcon {
+    color: yellow;
+    scale: 140%;
+}
+
+.code_box {
+    width: 150px;
+    height: 60px;
+    overflow: scroll;
+}
+
+.blankIcon {
+    color: rgb(210, 244, 255);
+    scale: 120%;
+}
+
+.code_box::-webkit-scrollbar {
+    display: none;
+}
+
+.text {
+    @include base_text();
+    font-size: 15px;
+    // text-overflow: ellipsis;
+}
+
+.box_tag {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: center;
+    font-family: monospace;
+    font-size: 15px;
+    overflow: scroll;
+}
+
+.box_tag::-webkit-scrollbar {
+    display: none;
+}
+
+.tag {
+    border: 1px solid rgb(133, 133, 133);
+    border-radius: 94px 65px 106px 93px / 120px 125px 190px 82px;
+    padding: 0px 10px 0px 10px;
+    margin: 0px 10px 0px 10px;
+    cursor: pointer;
+}
+
+.create_code {
+    display: flex;
+    position: fixed;
+    right: 15%;
+    bottom: 10%;
+    cursor: pointer;
+}
+
+.create_code:hover {
+    scale: 110%;
+}
+
+.create_code_icon {
+    font-size: 400%;
+    color: rgb(0, 47, 254);
+    background: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 94px 65px 106px 93px / 120px 125px 190px 82px;
+}

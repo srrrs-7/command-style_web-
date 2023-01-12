@@ -1,0 +1,74 @@
+query getAllCollection($limit: Int!, $skip: Int!) {
+    getAllCollection(limit: $limit, skip: $skip) {
+        id
+        username
+        code
+        img
+        description
+        performance
+        star
+        tags
+        created_at
+        updated_at
+        access
+        collection_id
+        user_id
+    }
+}
+
+query getAllCollectionBySearch($keyword: String!, $limit: Int!, $skip: Int!) {
+    getAllCollectionBySearch(keyword: $keyword, limit: $limit, skip: $skip) {
+        id
+        username
+        code
+        img
+        description
+        performance
+        star
+        tags
+        created_at
+        updated_at
+        access
+        collection_id
+        user_id
+    }
+}
+
+mutation createAdminCollection($user_id: Int!, $code_id: Int!) {
+    createAdminCollection(user_id: $user_id, code_id: $code_id) {
+        is_error
+        message
+    }
+}
+
+# with redis session
+mutation createCollection($code_id: Int!) {
+    createCollection(code_id: $code_id) {
+        is_error
+        message
+    }
+}
+
+mutation getCollection($id: Int!) {
+    getCollection(id: $id) {
+        id
+        username
+        code
+        img
+        description
+        performance
+        star
+        tags
+        created_at
+        updated_at
+        access
+        user_id
+    }
+}
+
+mutation deleteCollection($id: Int!) {
+    deleteCollection(id: $id) {
+        is_error
+        message
+    }
+}

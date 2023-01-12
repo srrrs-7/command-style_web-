@@ -1,0 +1,13 @@
+mutation createAdminUser($username: String!, $password: String!) {
+    createAdminUser(username: $username, password: $password) {
+        is_error
+        message
+    }
+}
+
+mutation getAdminUser($username: String!, $password: String!) {
+    getAdminUser(username: $username, password: $password) {
+        is_username
+        is_password
+    }
+}

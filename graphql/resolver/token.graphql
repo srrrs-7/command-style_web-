@@ -1,0 +1,7 @@
+mutation createToken($username: String!) {
+    createToken(username: $username)
+}
+
+mutation createAdminToken($username: String!, $password: String!) {
+    createAdminToken(username: $username, password: $password)
+}
