@@ -1,4 +1,4 @@
-import { pathState } from '../../../recoil/global';
+import { pathState, sessionState } from '../../../recoil/global';
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styles from './Login.module.scss';
@@ -14,6 +14,7 @@ import { RemoveSessionStorage, SetSessionStorage } from 'utils/session';
 
 function Login() {
     const [__, setPath] = useRecoilState<string>(pathState); // header current path
+    const [session, setSession] = useRecoilState<boolean>(sessionState);
     const [err, setErr] = useState<string>('');
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');

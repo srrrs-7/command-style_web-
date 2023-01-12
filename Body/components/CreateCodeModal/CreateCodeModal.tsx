@@ -9,9 +9,10 @@ import { distinctArray } from 'utils/utilArray';
 import defaultImage from '../../../public/penguin.png';
 import anime from 'animejs';
 import { GetSessionStorage, RemoveSessionStorage } from 'utils/session';
+import { sessionState } from 'recoil/global';
 
 function CreateCodeModal() {
-    const [_, setCreateCodeModal] = useRecoilState<boolean>(createCodeModalState); // show create code modal
+    const [createCodeModal, setCreateCodeModal] = useRecoilState<boolean>(createCodeModalState); // show create code modal
     // input state
     const [code, setCode] = useState<string>('');
     const [img, setImg] = useState<string | ArrayBuffer | null | undefined | any>(defaultImage.src);
@@ -20,10 +21,10 @@ function CreateCodeModal() {
     const [tag, setTag] = useState<string>('');
     // status
     const [err, setErr] = useState<string>('');
-    const [session, setSession] = useState<boolean>(false);
+    const [session, setSession] = useRecoilState<boolean>(sessionState);
     useEffect(() => {
-        setSession(GetSessionStorage() != null);
-    });
+        setSession(GetSessionStorage != null);
+    }, [err]);
     // animation ref
     const animation = useRef<any>(null);
 
@@ -44,6 +45,7 @@ function CreateCodeModal() {
         setTimeout(() => {
             setCreateCodeModal(false);
         }, 200);
+        setSession(GetSessionStorage != null);
     }
 
     function changeHandlerCode(e: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -115,11 +117,14 @@ function CreateCodeModal() {
             .catch((err) => {
                 if (String(err).includes('http: named cookie not present')) {
                     RemoveSessionStorage();
+                    setErr('session timeout error: please login');
+                    setSession(false);
                     // window.location.href = '/login';
                 }
                 if (err.response.status == 401) {
-                    // RemoveCookie();
                     RemoveSessionStorage();
+                    setErr('session timeout error: please login');
+                    setSession(false);
                     // window.location.href = '/login';
                 }
                 if (String(err.response.errors[0].message).includes('duplicate')) {

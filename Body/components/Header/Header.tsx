@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { pageState, pathState } from '../../../recoil/global';
+import { pageState, pathState, sessionState } from '../../../recoil/global';
 import styles from './Header.module.scss';
 import CasesRoundedIcon from '@mui/icons-material/CasesRounded';
 import BorderColorRoundedIcon from '@mui/icons-material/BorderColorRounded';
@@ -21,11 +21,11 @@ function Header() {
     const [___, setCurrRender] = useRecoilState<string>(bodyRenderComponentState);
     // category state
     const [____, setCategory] = useRecoilState(categoryState);
-    const [session, setSession] = useState<boolean>(false);
+    const [session, setSession] = useRecoilState<boolean>(sessionState);
 
     useEffect(() => {
-        setSession(GetSessionStorage() == null);
-    });
+        setSession(GetSessionStorage() != null);
+    }, []);
 
     function changeHandler(e: React.ChangeEvent<HTMLInputElement>) {
         e.preventDefault;
@@ -84,24 +84,6 @@ function Header() {
 
             {session ? (
                 <div className={styles.sign_box}>
-                    {path == '/signup' ? (
-                        <p className={styles.current_path}>Signup</p>
-                    ) : (
-                        <Link href='/signup'>
-                            <p className={styles.sign_text}>Signup</p>
-                        </Link>
-                    )}
-
-                    {path == '/login' ? (
-                        <p className={styles.current_path}>Login</p>
-                    ) : (
-                        <Link href='/login'>
-                            <p className={styles.sign_text}>Login</p>
-                        </Link>
-                    )}
-                </div>
-            ) : (
-                <div className={styles.sign_box}>
                     {path == '/collection' ? (
                         <div>
                             <CasesRoundedIcon sx={{ color: blue[700] }} fontSize='large' />
@@ -129,6 +111,24 @@ function Header() {
                             Logout
                         </p>
                     </div>
+                </div>
+            ) : (
+                <div className={styles.sign_box}>
+                    {path == '/signup' ? (
+                        <p className={styles.current_path}>Signup</p>
+                    ) : (
+                        <Link href='/signup'>
+                            <p className={styles.sign_text}>Signup</p>
+                        </Link>
+                    )}
+
+                    {path == '/login' ? (
+                        <p className={styles.current_path}>Login</p>
+                    ) : (
+                        <Link href='/login'>
+                            <p className={styles.sign_text}>Login</p>
+                        </Link>
+                    )}
                 </div>
             )}
         </div>

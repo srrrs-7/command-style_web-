@@ -11,3 +11,9 @@ export const pathState = atom<string>({
     key: 'pathState',
     default: '/',
 });
+
+// current path
+export const sessionState = atom<boolean>({
+    key: 'sessionState',
+    default: false,
+});

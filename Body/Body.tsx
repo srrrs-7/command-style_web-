@@ -3,7 +3,7 @@ import styles from './Body.module.scss';
 import CategoryBar from './components/CategoryBar/CategoryBar';
 import Pagination from './components/Pagination/Pagination';
 import { useRecoilState } from 'recoil';
-import { pathState } from '../recoil/global';
+import { pathState, sessionState } from '../recoil/global';
 import KeyboardCapslockTwoToneIcon from '@mui/icons-material/KeyboardCapslockTwoTone';
 import NoteAddRoundedIcon from '@mui/icons-material/NoteAddRounded';
 import TopBody from './ByFunction/TopBody';
@@ -28,11 +28,11 @@ function Body() {
     // create code modal state
     const [___, setCreateCodeModal] = useRecoilState<boolean>(createCodeModalState);
 
-    const [session, setSession] = useState<boolean>(false);
+    const [session, setSession] = useRecoilState<boolean>(sessionState);
 
     useEffect(() => {
         setSession(GetSessionStorage() != null);
-    });
+    }, [session]);
 
     // auto top button
     function returnTop() {
@@ -92,6 +92,7 @@ function Body() {
                         fontSize='large'
                         onClick={() => {
                             setCreateCodeModal(true);
+                            setSession(GetSessionStorage() != null);
                         }}
                     />
                 </div>
