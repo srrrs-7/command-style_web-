@@ -66,9 +66,29 @@
     background-color: rgb(255, 255, 255);
 }
 
+.close_btn {
+    padding: 0.3rem;
+    background-color: rgb(232, 232, 232);
+    border-radius: 94px 65px 106px 93px / 120px 125px 190px 82px;
+    border: none;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.close_btn:hover {
+    scale: 110%;
+}
+
 .adminButton:hover {
     @include base_select();
     scale: 95%;
+}
+
+.imgBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .err {

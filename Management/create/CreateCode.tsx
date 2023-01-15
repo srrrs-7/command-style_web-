@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import styles from './Create.module.scss';
 import { useCreateCodeMutation, CreateCodeMutationVariables, Scalars } from '../../graphql/types/graphql';
 import { adminClient, NewAdminHeader, option } from 'graphql/client';
-import { RemoveAdminCookie } from 'utils/cookie';
 import { distinctArray } from 'utils/utilArray';
 import { RemoveSessionStorage } from 'utils/session';
+import defaultImage from '../../public/logo.png';
 
 function CreateCode() {
     const [code, setCode] = useState<string>('');
-    const [img, setImg] = useState<ArrayBuffer | string>();
+    const [img, setImg] = useState<string | ArrayBuffer | null | undefined | any>(defaultImage.src);
+    const [imgStr, setImgStr] = useState<string>('/logo.png');
     const [description, setDescription] = useState<string>('');
     const [performance, setPerformance] = useState<string>('');
     const [star, setStar] = useState<number>(0);
@@ -34,6 +35,12 @@ function CreateCode() {
             setImg(e.target?.result!);
         };
         reader.readAsDataURL(file);
+        setImgStr(e.target.value);
+    }
+
+    function deleteImgHandler() {
+        setImg(undefined);
+        setImgStr('');
     }
 
     function changeHandlerDescription(e: React.ChangeEvent<HTMLInputElement>) {
@@ -87,12 +94,12 @@ function CreateCode() {
             .catch((err) => {
                 if (String(err).includes('http: named cookie not present')) {
                     RemoveSessionStorage();
-                    window.location.href = '/login';
+                    window.location.href = '/manage';
                 }
                 if (err.response.status == 401) {
                     // RemoveCookie();
                     RemoveSessionStorage();
-                    window.location.href = '/login';
+                    window.location.href = '/manage';
                 }
                 if (code == '') {
                     setErr('Code field error: must be fill');
@@ -155,18 +162,32 @@ function CreateCode() {
                         />
                     </div>
 
-                    <div className={styles.input_box}>
-                        <p className={styles.text}>image</p>
+                    {imgStr == '' ? (
                         <input
                             type='file'
                             name='image'
                             accept='image/png, image/jpeg'
+                            value={imgStr}
                             className={styles.input}
                             placeholder='image'
                             onChange={(e) => changeHandlerImg(e)}
                             required
                         />
-                    </div>
+                    ) : (
+                        <div className={styles.imgBox}>
+                            <img src={img} alt='img' width={150} height={80} />
+                            <div>
+                                <button
+                                    className={styles.close_btn}
+                                    onClick={() => {
+                                        deleteImgHandler();
+                                    }}
+                                >
+                                    ❌
+                                </button>
+                            </div>
+                        </div>
+                    )}
 
                     <div className={styles.input_box}>
                         <p className={styles.text}>description</p>

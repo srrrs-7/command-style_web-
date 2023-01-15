@@ -12,6 +12,8 @@ import { codeIdState, createCodeModalState, getCodeModalState } from 'recoil/mod
 import { timeRegexp } from 'utils/regexp';
 import CreateCodeModal from 'Body/components/CreateCodeModal/CreateCodeModal';
 import { RemoveSessionStorage } from 'utils/session';
+import TerminalRoundedIcon from '@mui/icons-material/TerminalRounded';
+import { blue } from '@mui/material/colors';
 
 function TopBody() {
     const [page, _] = useRecoilState<number>(pageState);
@@ -26,9 +28,6 @@ function TopBody() {
     // get all products
     const variable: GetAllCodesQueryVariables = { limit: 30, skip: 30 * (page - 1) };
     const { data, isError, refetch, fetchStatus, status, failureReason, failureCount } = useGetAllCodesQuery(client, variable, option, NewHeader());
-    if (failureCount == 4) {
-        RemoveSessionStorage();
-    }
 
     // modal handler
     function showModalHandler(codeId: number) {

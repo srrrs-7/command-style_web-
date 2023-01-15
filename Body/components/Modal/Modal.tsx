@@ -10,7 +10,6 @@ import {
     useUpdateStarMutation,
 } from '../../../graphql/types/graphql';
 import { client, NewHeader, option } from 'graphql/client';
-import { GetCookie, RemoveCookie } from 'utils/cookie';
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 import { codeIdState, getCodeModalState } from 'recoil/modal';
@@ -35,9 +34,8 @@ function Modal() {
     const updateStarMutation = useUpdateStarMutation(client, option, NewHeader());
     // get code query
     const getCodeVariable: GetCodeQueryVariables = { id: codeId };
-    const { data, isError, refetch } = useGetCodeQuery(client, getCodeVariable, option, NewHeader());
-    if (isError && data == undefined) {
-        // RemoveCookie();
+    const { data, isError, refetch, failureCount } = useGetCodeQuery(client, getCodeVariable, option, NewHeader());
+    if (failureCount == 2) {
         RemoveSessionStorage();
         window.location.href = '/login';
     }

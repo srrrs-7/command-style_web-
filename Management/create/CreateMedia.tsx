@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import styles from './Create.module.scss';
 import { useCreateMediaMutation, CreateMediaMutationVariables } from '../../graphql/types/graphql';
 import { adminClient, NewAdminHeader, option } from 'graphql/client';
-import { RemoveAdminCookie } from 'utils/cookie';
 import { RemoveSessionStorage } from 'utils/session';
+import defaultImage from '../../public/logo.png';
 
 function CreateMedia() {
     const [title, setTitle] = useState<string>('');
     const [contents, setContents] = useState<string>('');
-    const [img, setImg] = useState<string | ArrayBuffer>('');
+    const [img, setImg] = useState<string | ArrayBuffer | null | undefined | any>(defaultImage.src);
+    const [imgStr, setImgStr] = useState<string>('/logo.png');
     // status state
     const [err, setErr] = useState<string>('');
     const [success, setSuccess] = useState(false);
@@ -39,6 +40,12 @@ function CreateMedia() {
             setImg(e.target?.result!);
         };
         reader.readAsDataURL(file);
+        setImgStr(e.target?.value);
+    }
+
+    function deleteImgHandler() {
+        setImg(undefined);
+        setImgStr('');
     }
 
     function createHandler() {
@@ -122,18 +129,32 @@ function CreateMedia() {
                         />
                     </div>
 
-                    <div className={styles.input_box}>
-                        <p className={styles.text}>image</p>
+                    {imgStr == '' ? (
                         <input
                             type='file'
                             name='image'
                             accept='image/png, image/jpeg'
+                            value={imgStr}
                             className={styles.input}
                             placeholder='image'
                             onChange={(e) => changeHandlerImg(e)}
                             required
                         />
-                    </div>
+                    ) : (
+                        <div className={styles.imgBox}>
+                            <img src={img} alt='img' width={150} height={80} />
+                            <div>
+                                <button
+                                    className={styles.close_btn}
+                                    onClick={() => {
+                                        deleteImgHandler();
+                                    }}
+                                >
+                                    ❌
+                                </button>
+                            </div>
+                        </div>
+                    )}
 
                     <div className={styles.adminBox}>
                         <button

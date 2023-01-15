@@ -64,7 +64,7 @@ function CategoryBar() {
                             <p>LINUX</p>
                         </div>
                     ) : (
-                        <div className={styles.grid_items} onClick={() => clickKeywordSearchHandler('rust')}>
+                        <div className={styles.grid_items} onClick={() => clickKeywordSearchHandler('linux')}>
                             <p>LINUX</p>
                         </div>
                     )}

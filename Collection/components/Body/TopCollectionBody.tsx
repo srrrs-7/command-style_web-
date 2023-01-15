@@ -40,7 +40,7 @@ function TopCollectionBody() {
     if (failureCount == 2) {
         // RemoveCookie();
         RemoveSessionStorage();
-        window.location.href = '/';
+        window.location.href = '/login';
     }
 
     // show modal

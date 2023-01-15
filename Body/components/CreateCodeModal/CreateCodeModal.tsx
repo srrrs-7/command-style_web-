@@ -3,13 +3,13 @@ import { useRecoilState } from 'recoil';
 import styles from './CreateCodeModal.module.scss';
 import { CreateCodeMutationVariables, useCreateCodeMutation } from '../../../graphql/types/graphql';
 import { client, NewHeader, option } from 'graphql/client';
-import { GetCookie, RemoveCookie } from 'utils/cookie';
 import { createCodeModalState } from 'recoil/modal';
 import { distinctArray } from 'utils/utilArray';
 import defaultImage from '../../../public/logo.png';
 import anime from 'animejs';
 import { GetSessionStorage, RemoveSessionStorage } from 'utils/session';
 import { sessionState } from 'recoil/global';
+import TerminalRoundedIcon from '@mui/icons-material/TerminalRounded';
 
 function CreateCodeModal() {
     const [createCodeModal, setCreateCodeModal] = useRecoilState<boolean>(createCodeModalState); // show create code modal
@@ -94,7 +94,7 @@ function CreateCodeModal() {
             description: description,
             performance: 'good',
             star: [],
-            tags: distinctArray(tag.split(',')), // tag -> array tags
+            tags: distinctArray(tag.replaceAll(/\s+/g, '').split(',')), // tag -> array tags
             access: 0,
         };
         addCodeMutation
@@ -121,7 +121,7 @@ function CreateCodeModal() {
                     setSession(false);
                     // window.location.href = '/login';
                 }
-                if (err.response.status == 401) {
+                if (err.response?.status == 401) {
                     RemoveSessionStorage();
                     setErr('session timeout error: please login');
                     setSession(false);
@@ -252,20 +252,16 @@ function CreateCodeModal() {
                     </div>
                 )}
 
-                {session ? (
-                    <div className={styles.btn_box}>
-                        <button
-                            className={styles.btn}
-                            onClick={() => {
-                                createCodeHandler();
-                            }}
-                        >
-                            Create
-                        </button>
-                    </div>
-                ) : (
-                    <div></div>
-                )}
+                <div className={styles.btn_box}>
+                    <button
+                        className={styles.btn}
+                        onClick={() => {
+                            createCodeHandler();
+                        }}
+                    >
+                        Create
+                    </button>
+                </div>
             </section>
 
             {/* modal background blur */}

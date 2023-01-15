@@ -15,7 +15,6 @@ import SortedStar from './ByFunction/SortedStar';
 import TagsSearch from './ByFunction/TagsSearch';
 import KeywordSearch from './ByFunction/KeywordSearch';
 import { createCodeModalState } from 'recoil/modal';
-import { GetCookie } from 'utils/cookie';
 import { blue } from '@mui/material/colors';
 import { GetSessionStorage } from 'utils/session';
 

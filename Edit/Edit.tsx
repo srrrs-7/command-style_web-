@@ -19,6 +19,7 @@ import { timeRegexp } from 'utils/regexp';
 import Pagination from '../Body/components/Pagination/Pagination';
 import CreateCodeModal from 'Body/components/CreateCodeModal/CreateCodeModal';
 import { GetSessionStorage, RemoveSessionStorage } from 'utils/session';
+import { blue } from '@mui/material/colors';
 
 function TopBody() {
     const [_, setPath] = useRecoilState<string>(pathState); // header current state -> blue text
@@ -45,7 +46,7 @@ function TopBody() {
     if (failureCount == 2) {
         // RemoveCookie();
         RemoveSessionStorage();
-        window.location.href = '/';
+        window.location.href = '/login';
     }
 
     useLayoutEffect(() => {
@@ -153,7 +154,7 @@ function TopBody() {
                         setCreateCodeModal(true);
                     }}
                 >
-                    <NoteAddRoundedIcon className={styles.create_code_icon} />
+                    <NoteAddRoundedIcon className={styles.create_code_icon} sx={{ color: blue[700] }} fontSize='large' />
                 </div>
             )}
         </>

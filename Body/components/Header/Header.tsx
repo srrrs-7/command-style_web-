@@ -9,7 +9,6 @@ import { blue } from '@mui/material/colors';
 import { GetCookie, RemoveCookie } from 'utils/cookie';
 import { bodyRenderComponentState, categoryState, keywordState } from 'recoil/input';
 import { RemoveSessionStorage, GetSessionStorage } from 'utils/session';
-import { setCookie } from 'nookies';
 
 function Header() {
     const [path, _] = useRecoilState<string>(pathState); // header current state -> blue text

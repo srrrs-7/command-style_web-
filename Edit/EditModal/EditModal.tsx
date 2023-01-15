@@ -37,7 +37,7 @@ function EditModal() {
     if (failureCount == 2) {
         // RemoveCookie();
         RemoveSessionStorage();
-        window.location.href = '/';
+        window.location.href = '/login';
     }
 
     useEffect(() => {
@@ -103,7 +103,7 @@ function EditModal() {
             img: img,
             description: description,
             performance: performance,
-            tags: distinctArray(tag.split(',')), // tag -> array tags
+            tags: distinctArray(tag.replaceAll(/\s+/g, '').split(',')), // tag -> array tags
         };
         updateCodeMutation
             .mutateAsync(updateCodeVariable, option)

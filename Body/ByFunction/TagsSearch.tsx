@@ -15,7 +15,6 @@ import { useRecoilState } from 'recoil';
 import { pageState } from 'recoil/global';
 import { bodyRenderComponentState, getAllTagSearchState, keywordState } from 'recoil/input';
 import { codeIdState, createCodeModalState, getCodeModalState } from 'recoil/modal';
-import { RemoveCookie } from 'utils/cookie';
 import { timeRegexp } from 'utils/regexp';
 import CreateCodeModal from 'Body/components/CreateCodeModal/CreateCodeModal';
 import { RemoveSessionStorage } from 'utils/session';
@@ -44,10 +43,10 @@ function TagsSearch() {
 
     useEffect(() => {
         setCurrRender('tags');
-        refetch();
         if (tags.length == 0) {
             setCurrRender('top');
         }
+        refetch();
     }, [isGetCodeModal, tags]);
 
     // get a code
@@ -60,6 +59,7 @@ function TagsSearch() {
 
         setCodeId(codeId); // set code id for modal
         setIsGetCodeModal(true); // modal state
+        refetch();
     }
 
     // refetch when toggle star

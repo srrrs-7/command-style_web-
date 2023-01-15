@@ -4,8 +4,6 @@ import { useRecoilState } from 'recoil';
 import styles from './Signup.module.scss';
 import { CreateUserMutationVariables, useCreateUserMutation } from '../../../graphql/types/graphql';
 import { client, option, NewHeader } from '../../../graphql/client';
-import { RemoveSessionStorage } from 'utils/session';
-import { emailRegexp } from 'utils/regexp';
 
 function Signup() {
     const [__, setPath] = useRecoilState<string>(pathState);
@@ -18,13 +16,6 @@ function Signup() {
     const [birth, setBirth] = useState<string>('');
 
     // create user mutation
-    const variable: CreateUserMutationVariables = {
-        username: username,
-        password: password,
-        email: email,
-        sex: sex,
-        date_of_birth: birth,
-    };
     const mutation = useCreateUserMutation(client, option, NewHeader());
 
     function changeHandlerUsername(e: React.ChangeEvent<HTMLInputElement>) {
@@ -52,19 +43,26 @@ function Signup() {
             setErr('All contents must be fill');
             return;
         }
-        if (username.length <= 5) {
-            setErr('username must be at least 5 characters');
+        if (username.length < 5) {
+            setErr('Username must be at least 5 characters');
             return;
         }
-        if (password.length <= 8) {
-            setErr('password must be at least 8 characters');
+        if (password.length < 8) {
+            setErr('Password must be at least 8 characters');
             return;
         }
         if (!email.includes('@') && !email.includes('.')) {
-            setErr('Email field error: must be email format');
+            setErr('Email must be mail format');
             return;
         }
 
+        const variable: CreateUserMutationVariables = {
+            username: username,
+            password: password,
+            email: email,
+            sex: sex,
+            date_of_birth: birth,
+        };
         mutation
             .mutateAsync(variable, option)
             .then((res) => {

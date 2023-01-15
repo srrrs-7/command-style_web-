@@ -11,7 +11,6 @@ import {
     GetCodeQueryVariables,
     useGetCodeQuery,
 } from 'graphql/types/graphql';
-import { GetCookie, RemoveCookie } from 'utils/cookie';
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 import { codeIdState, collectionModalState } from 'recoil/modal';
@@ -43,7 +42,7 @@ function CartModal() {
     if (failureCount == 2) {
         // RemoveCookie();
         RemoveSessionStorage();
-        window.location.href = '/';
+        window.location.href = '/login';
     }
 
     // anime ref
@@ -102,7 +101,7 @@ function CartModal() {
     function deleteHandler() {
         const deleteCollectionVariable: DeleteCollectionMutationVariables = { id: collectionIdForDelete };
 
-        const ok = window.confirm('Delete a Item ?');
+        const ok = window.confirm('Remove a Item in collection?');
         if (!ok) {
             return;
         }
